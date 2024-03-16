@@ -1,0 +1,53 @@
+*{
+    font-family: Poppins, sans-serif;
+}
+
+body{
+    background-color: #0A2D33;
+    color: #A3BBAD;
+}
+
+h1{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+    text-align:center;
+}
+
+.input-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #030F11;
+    padding:50px;
+    margin:0 auto;
+    border-radius:40px;
+    width:70%;
+}
+
+#output{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:30px auto;
+    background-color: #A3BBAD;
+    color: #0A2D33;
+    border-radius: 20px;
+    text-align:center;
+    width:60%;
+}
+
+#number, #convert-btn{
+    background-color:#A3BBAD;
+    color:#030F11;
+    margin-right:15px;
+    text-align:center;
+    border-radius:10px;
+}
+
+#convert-btn{
+    padding:3px 7px;
+    font-weight:bold;
+}
+
