@@ -45,6 +45,8 @@ const displayOutput = () => {
   const inputNum = document.getElementById("number");
   const intInput = inputNum.value;
 
+  output.style.setProperty('padding', '10px')
+
   if (checkEmpty(intInput)) {
     output.innerText = "Please enter a valid number";
     return;
@@ -55,8 +57,8 @@ const displayOutput = () => {
     output.innerText = "Please enter a number less than or equal to 3999";
     return;
   }
-  opText = convertToroman(intInput);
-  output.innerText = opText;
+  const opText = convertToroman(intInput);
+  output.innerHTML = `<span>${opText}</span>`; 
 };
 
 convertBtn.addEventListener("click", displayOutput);
