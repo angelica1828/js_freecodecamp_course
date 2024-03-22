@@ -22,9 +22,6 @@ const validate = () =>{
     
 }
 
-const displayOutput = () =>{
-}
-
 checkButton.addEventListener("click",validate);
 
 clearButton.addEventListener("click",()=>{
