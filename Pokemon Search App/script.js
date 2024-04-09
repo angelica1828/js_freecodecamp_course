@@ -32,7 +32,7 @@ const parseData = (data) =>{
     
     types.forEach(element => {
         const newSpan = document.createElement('span')
-        newSpan.textContent = element.type.name.toUpperCase();
+        newSpan.textContent = element.type.name.toUpperCase().concat(" ");
         newSpan.id="type";
         pokemonType.appendChild(newSpan);
     });
@@ -58,8 +58,8 @@ const putPic = (url) =>{
     newImg.alt = "sprite";
     newImg.id = "sprite";
 
-    const speed = document.getElementById('speed');
-    speed.appendChild(newImg);
+    const imgCont = document.getElementById('img-cont');
+    imgCont.appendChild(newImg);
 }
 
 const fetchData = async() =>{
@@ -70,6 +70,11 @@ const fetchData = async() =>{
             types.removeChild(span);
         }
 
+        const img = document.getElementById('sprite')
+        const imgCont = document.getElementById('img-cont');
+        if(img){
+            imgCont.removeChild(img)
+        }
         const searchInput = cleanPokemonNameId(document.getElementById('search-input').value);
 
         const res = await fetch(api_url.concat(searchInput));
