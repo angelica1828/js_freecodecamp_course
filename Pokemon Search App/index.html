@@ -1,26 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <h1>Pokemon Search App</h1>
-    <input type="text" id="search-input">
-    <button id="search-button">Search!</button>
-    <span id="pokemon-name"></span>
-    <span id="pokemon-id"></span>
-    <span id="weight"></span>
-    <span id="height"></span>
-    <div id="types"></div>
-    <span id="hp"></span>
-    <span id="attack"></span>
-    <span id="defense"></span>
-    <span id="special-attack"></span>
-    <span id="special-defense"></span>
-    <span id="speed"></span>
+    <div class="card">
+        <div class="input-container">
+        <input type="text" id="search-input" required/>
+        <button id="search-button">Search!</button>
+        </div>
+        <div class="id-cont" id="id-cont">
+            <u>NAME:</u> <span id="pokemon-name"></span>
+            <u>ID:</u> <span id="pokemon-id"></span>
+        </div>
+        <div id="img-cont"></div>
+        <div class="physicality-cont">
+            <u>WEIGHT:</u> <span id="weight"></span>
+            <u>HEIGHT:</u> <span id="height"></span>
+        </div>
+        <div class="types-cont">
+            <u>TYPES:</u> <div id="types"></div>
+        </div>
+        <br>
+        <table>
+            <tr>
+            <th> BASE </th>
+            <th> STATS </th>
+            </tr>
+            <tr>
+                <td> HP </td>
+                <td> <span id="hp"></span> </td>
+            </tr>
+            <tr>
+                <td> Attack </td>
+                <td> <span id="attack"></span> </td>
+            </tr>
+            <tr>
+                <td> Defense </td>
+                <td> <span id="defense"></span> </td>
+            </tr>
+            <tr>
+                <td> Special Attack </td>
+                <td> <span id="special-attack"></span> </td>
+            </tr>
+            <tr>
+                <td> Special Defense </td>
+                <td> <span id="special-defense"></span> </td>
+            </tr>
+            <tr>
+                <td> Speed </td>
+                <td> <span id="speed"></span> </td>
+            </tr>
+        </table>
+    </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
