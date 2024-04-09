@@ -1,0 +1,100 @@
+*{
+    font-family: Comfortaa, Verdana, sans-serif;
+    font-weight:700;
+}
+
+body{
+    background-color: #262626;
+}
+
+.card{
+    background-color: #7EA3CC;
+    padding:20px;
+    margin: 5px auto;
+    max-width:500px;
+    height:600px;
+    width:400px;
+    border-radius:20px;
+    box-shadow: 10px 10px 0px 0px #5b89bd;
+}
+
+h1{
+    text-align:center;
+    padding:20px;
+    color:#7EA3CC;
+}
+
+.input-container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    border-radius:10px;
+    max-width:500px;
+    min-width: 200px;
+    margin:2px auto;
+}
+
+input, button{
+    height:25px;
+    border-radius: 5px;
+    border:none;
+}
+
+.base-info{
+    background-color: #255C99;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #000;
+    text-align: center;
+    padding: 8px;
+}
+
+th{
+    background-color: #183B63;
+    color:#7EA3CC;
+}
+
+tr:nth-child(even) {
+    background-color: #7EA3CC;
+}
+tr:nth-child(odd) {
+    background-color: #255C99;
+}
+
+.id-cont,.physicality-cont{
+    display:flex;
+    justify-content: center;
+    gap:10px;
+    margin:10px;
+}
+
+#img-cont{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    display: block;
+    width:200px;
+    height: 200px;
+}
+
+.types-cont{
+    text-align:center;
+    display:flex;
+    justify-content: center;
+}
+
+#type{
+    background-color: #7EA3CC;
+    margin:7px;
+    padding:3px;
+}
