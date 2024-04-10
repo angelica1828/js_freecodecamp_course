@@ -1,79 +1,83 @@
 const price = 3.26;
-const cid = [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]];
-const cidObject = Object.fromEntries(cid);
-let sumOfValues = cid.reduce((acc, [, value]) => acc + value, 0);
+const cid = [
+  ["PENNY", 1.01],
+  ["NICKEL", 2.05],
+  ["DIME", 3.1],
+  ["QUARTER", 4.25],
+  ["ONE", 90],
+  ["FIVE", 55],
+  ["TEN", 20],
+  ["TWENTY", 60],
+  ["ONE HUNDRED", 100],
+];
 
-const face_vals = {
-    100: "ONE HUNDRED",
-    20: "TWENTY",
-    10: "TEN",
-    5: "FIVE",
-    1: "ONE",
-    0.25: "QUARTER",
-    0.1: "DIME",
-    0.05: "NICKEL",
-    0.01: "PENNY"
-};
-
-const counts = {
-    "ONE HUNDRED": 0,
-    "TWENTY": 0,
-    "TEN": 0,
-    "FIVE": 0,
-    "ONE": 0,
-    "QUARTER": 0,
-    "DIME": 0,
-    "NICKEL": 0,
-    "PENNY": 0
-};
-
+const cashInput = document.getElementById("cash");
 const purchaseBtn = document.getElementById("purchase-btn");
 const changeDue = document.getElementById("change-due");
 
-const checkPrice = () => {
-    const cash = parseFloat(document.getElementById("cash").value);
-    if (cash < price) {
-        alert("Customer does not have enough money to purchase the item.");
-        return;
-    } else if (cash === price) {
-        changeDue.textContent = "No change due - customer paid with exact cash";
-        return;
+purchaseBtn.addEventListener("click", () => {
+  if (Number(cashInput.value) < price) {
+    alert("Customer does not have enough money to purchase the item");
+    cashInput.value = "";
+    return;
+  } else if (Number(cashInput.value) === price) {
+    changeDue.textContent = "No change due - customer paid with exact cash";
+    cashInput.value = "";
+    return;
+  }
+
+  const cidObject = Object.fromEntries(cid);
+  let change = Number(cashInput.value) - price;
+  let reversedCid = [...cid].reverse();
+  changeDue.textContent = "Status: OPEN ";
+  let totalCID = parseFloat(
+    Object.values(cidObject)
+      .reduce((acc, val) => acc + val, 0)
+      .toFixed(2)
+  );
+
+  let changeList = [];
+  const currencyUnit = {
+    PENNY: 0.01,
+    NICKEL: 0.05,
+    DIME: 0.1,
+    QUARTER: 0.25,
+    ONE: 1,
+    FIVE: 5,
+    TEN: 10,
+    TWENTY: 20,
+    "ONE HUNDRED": 100,
+  };
+  const denoms = Object.values(currencyUnit).reverse();
+
+  if (totalCID < change) {
+    return (changeDue.textContent = "Status: INSUFFICIENT_FUNDS");
+  }
+
+  if (totalCID === change) {
+    changeDue.textContent = "Status: CLOSED";
+  }
+
+  for (let i = 0; i <= reversedCid.length; i++) {
+    if (change > denoms[i] && change > 0) {
+      let count = 0;
+      let total = reversedCid[i][1];
+      while (total > 0 && change >= denoms[i]) {
+        total -= denoms[i];
+        change = parseFloat((change -= denoms[i]).toFixed(2));
+        count++;
+      }
+
+      if (count > 0) {
+        changeList.push([reversedCid[i][0], count * denoms[i]]);
+      }
     }
+  }
 
-    let diff = (cash - price).toFixed(2);
-
-    let fin = "Status: ";
-
-    if (sumOfValues < diff) {
-        fin = "Status: INSUFFICIENT_FUNDS";
-    } else {
-        sumOfValues -= diff
-        for (const val of Object.keys(face_vals).map(parseFloat).sort((a, b) => b - a)) {
-            while (diff >= val && cidObject[face_vals[val]] > 0) {
-                counts[face_vals[val]] += val;
-                counts[face_vals[val]] = parseFloat(counts[face_vals[val]].toFixed(2));
-                diff -= val;
-                diff = parseFloat(diff.toFixed(2));
-                cidObject[face_vals[val]] -= val;
-            }
-        }
-        if (diff > 0) {
-            fin = "Status: INSUFFICIENT_FUNDS";
-        } else {
-            if (sumOfValues === 0) {
-                fin += "CLOSED ";
-            } else {
-                fin += "OPEN ";
-            }
-            Object.entries(counts).forEach(([key, value]) => {
-                if (value !== 0) {
-                    fin += `${key}: $${value} `;
-                }
-            });
-        }
-    }
-
-    changeDue.innerHTML = `<p>${fin}</p>`;
-};
-
-purchaseBtn.addEventListener("click", checkPrice);
+  if (change > 0) {
+    return (changeDue.textContent = "Status: INSUFFICIENT_FUNDS");
+  }
+  changeList.map(
+    (money) => (changeDue.textContent += `${money[0]}: $${money[1]} `)
+  );
+});
