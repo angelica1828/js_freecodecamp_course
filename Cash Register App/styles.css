@@ -1,0 +1,60 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background-color: #2A2D34;
+}
+
+h1{
+    text-align:center;
+    color:#009B72;
+    font-weight: 1800;
+    font-style: italic;
+}
+
+.input-cont{
+    border: solid 1px black;
+    padding:20px;
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+    width:75%;
+    margin: 10px auto;
+    background-color: #009DDC;
+    border-radius:50px;
+    height:100px;
+}
+
+input, button{
+    border:none;
+    border-radius:12px;
+    height:25px;
+    text-align: center;
+}
+button{
+    padding: 0px 10px;
+}
+button:hover{
+    background-color: #6761A8;
+    border: solid 1px black;
+}
+
+#change-due{
+    border: solid 1px black;
+    padding:20px;
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+    justify-content: center;
+    align-items: center;
+    width:50%;
+    margin: 20px auto;
+    background-color: #009B72;
+    border-radius:50px;
+    box-shadow: 0px 0px 7px 7px #009DDC;
+    height:50px;
+    text-align: center;
+}
