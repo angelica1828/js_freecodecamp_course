@@ -1,5 +1,5 @@
-# React Test Projects
-Welcome to the React Test Projects repository! This collection of small test projects was created while learning React. Each project explores different aspects of React development, providing hands-on experience with various concepts and features.
+# JavaScript Test Projects
+This collection of small test projects was created while learning JavaScript. Each project explores different aspects of JavaScript development and the usage of APIs and Data Structures, providing hands-on experience with various concepts and features.
 
 ## Projects Included
 ### Project 1: Palindrome Checker
